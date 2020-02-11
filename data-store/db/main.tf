@@ -3,7 +3,7 @@
 # By Andy Cai
 ###################
 
-resource "aws_db_instance" "mysql_example" {
+resource "aws_db_instance" "db_example" {
   identifier_prefix = "${var.db_cluster_name}-example1"
   engine            = var.db_engine
   allocated_storage = var.db_storage_size
