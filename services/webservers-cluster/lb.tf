@@ -4,7 +4,7 @@
 ###################
 
 resource "aws_lb" "andy_lb_example" {
-  name               = "var.cluster_name-lb-example"
+  name               = "${var.cluster_name}-lb-example"
   load_balancer_type = "application"
   subnets            = data.aws_subnet_ids.default.ids
   security_groups    = [aws_security_group.alb.id]
@@ -28,7 +28,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name     = "var.cluster_name-asg-example"
+  name     = "${var.cluster_name}-asg-example"
   port     = var.server_port
   protocol = local.http_protocol
   vpc_id   = data.aws_vpc.default.id

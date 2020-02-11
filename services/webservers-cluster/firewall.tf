@@ -13,7 +13,7 @@ locals {
 }
 
 resource "aws_security_group" "instance" {
-  name = "var.cluster_name-example-asg-instance"
+  name = "${var.cluster_name}-example-asg-instance"
 
   ingress {
     from_port   = var.server_port
@@ -24,11 +24,11 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_security_group" "alb" {
-  name = "var.cluster_name-example-alb"
+  name = "${var.cluster_name}-example-alb"
 }
 
 resource "aws_security_group_rule" "allow_all_inbound" {
-  type              = "ingresss"
+  type              = "ingress"
   security_group_id = aws_security_group.alb.id
 
   from_port   = local.any_port
